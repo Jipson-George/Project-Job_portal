@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-striped">
+    <thead>
+    <th>jobid</th>
+    <th>Applicant</th>
+    <th>Email id</th>
+    <th>Title</th>
+    <th>company</th>
+    <th>Applied on</th>
+    <th>Job details</th>
+
+    </thead>
+    <tbody>
+    {% for i in j %}
+    <tr>
+        <td>{{i.jobid}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.email}}</td>
+
+        <td>{{i.jobtitle}}</td>
+        <td>{{i.company}}</td>
+        <td>{{i.Date}}</td>
+        <td><a href="{% url 'job_fdetail' jid=i.jobid %}"><button class="btn btn-outline-info">Details</button></a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
+{% endblock %}

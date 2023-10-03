@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-striped">
+  <thead>
+  <th>Jobid</th>
+  <th>name</th>
+  <th>Email id</th>
+  <th>Profile</th>
+  </thead>
+  <tbody>
+  {% for i in a %}
+  <tr>
+    <td>{{i.jobid}}</td>
+    <td>{{i.name}}</td>
+    <td>{{i.email}}</td>
+    <td><a href="{% url 'Applicant_profile' c=i.email %}"><button class="btn btn-outline-info">Profile</button></a></td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</body>
+</html>
+{% endblock %}

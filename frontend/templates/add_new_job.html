@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% extends 'employerhome.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="form-group" style=" margin-left:350px;" >
+  <h3 style="color:green" style="margin-top:30px;">Post a new Job</h3>
+  <div class="col-lg-10" style="margin-top:30px;" >
+    <label>Job Title:</label>
+  <input type="text" placeholder="" name="Title" class="form-control" required><br>
+<!--      {% for i in employerdata %}-->
+    <input type="text" placeholder="" name="Company" class="form-control" value="{{employerdata.Name}}" required><br>
+<!--      {% endfor %}-->
+    <label>Job type:</label>
+    <select class="form-control btn-outline-success  btn-dropdown-toggle" id="exampleFormControlSelect" name="Jobype">
+                        <option>:-</option>
+                     {% for i in job_typedata %}
+                        <option>{{i.jobtype}}</option>
+                         {% endfor %}
+                      </select><br>
+    <label>Job Category:</label><br>
+    <select class="form-control btn-outline-success  btn-dropdown-toggle" id="exampleFormControlSelect2" name="Jobcat">
+                        <option>:-</option>
+                     {% for i in jobdata %}
+                        <option>{{i.jobcat}}</option>
+                         {% endfor %}
+                      </select><br>
+    <label>No of vaccancy:</label>
+
+      <input type="text" placeholder="" name="vaccancy" class="form-control" required><br>
+    <label>Experiance need:</label>
+      <input type="text" placeholder="" name="Experiance" class="form-control" required><br>
+
+    <label>Job description:</label><br>
+    <textarea class="form-control" name="Description"></textarea>
+    <div>
+      <button class="btn btn-outline-success" style="margin-left:350px; margin-top:25px;">Post Job</button>
+    </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-bordered">
+    <thead>
+    <th>Employer name</th>
+    <th>Email</th>
+    <th>Company</th>
+    <th>Status</th>
+    <th>Job Postings</th>
+    <th></th>
+    </thead>
+    <tbody>
+    {% for i in empdata %}
+    <tr>
+        <td>{{i.Ename}}</td>
+
+        <td>{{i.Eemail}}</td>
+        <td>{{i.Company}}</td>
+        <td>{{i.status}}</td>
+        <td><a href="{% url 'postedjobs' emp=i.Eemail %}"><button class="btn btn-outline-success">Job Postings</button></a></td>
+                <td>	<form method="get" action="{% url 'companyprofile' %}" enctype="multipart/form-data">
+											{% csrf_token %}
+											<input type="hidden" name="com" value="{{i.Cemail}}">
+											<button type="submit" style="margin-left:100px; margin-bottom:25px;" class="btn btn-outline-success">Details</button>
+
+										</form></a></td>
+
+
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+</body>
+</html>
+{% endblock %}

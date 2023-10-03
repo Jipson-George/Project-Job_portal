@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% extends 'employerhome.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color:#EADEDC;">
+<table class="table table-bordered table align-middle" style="background-color:#EADEDC;">
+    <tr>
+        <th>Jobid</th>
+
+
+        <th>Job title</th>
+        <th>Job type</th>
+
+
+
+
+        <th>Date</th>
+        <th>status</th>
+        <th>applicants</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+    <tbody>
+    {% for i in postdata %}
+    <tr>
+        <td>{{i.id}}</td>
+
+        <td>{{i.Title}}</td>
+        <td>{{i.Type}}</td>
+
+
+
+        <td>{{i.Date}}</td>
+        <td><button class="btn btn-outline-warning">{{i.approval}}</button></td>
+        <td><a href="{% url 'applicants' jid=i.id %}"><button class="btn btn-outline-success">applicants</button></a></td>
+
+        <td><a href="{% url 'jobpostdetails' joid=i.id %}"><button class="btn btn-outline-info">Details</button></a></td>
+
+        <td><a ><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Close job</button></a></td>
+<!--    <td><button class="btn btn-outline-warning">{{i.approval}}</button></td>-->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">close!!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <p>"Job will be removed from website..!"</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">dismiss</button>
+          <a href="{% url 'closejob' j=i.id %}"  ><button type="button" class="btn btn-outline-danger">close the job</button></a>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+    </tr>
+
+{% endfor %}
+    </tbody>
+
+</table>
+<!-- Button trigger modal -->
+<!--<button type="button" class="btn btn-primary" >-->
+<!--  Launch static backdrop modal-->
+<!--</button>-->
+
+<!-- Modal -->
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+{% extends 'home.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+</head>
+<body class="w3-light-grey">
+{% for i in a %}
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+
+    <!-- Left Column -->
+    <div class="w3-third">
+
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src="{{i.Image.url}}" style="width:100%" alt="Avatar">
+          <div class="w3-display-bottomleft w3-container w3-text-black">
+            <h2 style="color:white;">{{i.Name}}</h2>
+          </div>
+        </div>
+        <div class="w3-container">
+          {% if request.session.email %}
+          <a href="{% url 'EditapplicantP' pid=i.id %}"><p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>edit</p></a>
+          {% endif %}
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{i.City}}</p>
+                    <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{i.Email}}</p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>{{i.Phone}}</p>
+          <label><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i></label>
+          <div  style="display:block; margin-left:30px;">
+          {{i.Street}}<br>
+          {{i.Address}}<br>
+          {{i.Nation}}<br>
+          </div>
+          <hr>
+          <div class="w3-container">
+            <p><i class="far fa-clock fa-fw w3-margin-right w3-large w3-text-teal"></i>{{i.Date}}</p>
+            <p><i class="fas fa-calendar-alt fa-fw w3-margin-right w3-large w3-text-teal"></i> {{i.Ddate}}{{i.Dmonth}}{{i.Dyear}}</p>
+            <p><i class="fas fa-user-alt fa-fw w3-margin-right w3-large w3-text-teal"></i>{{i.Gender}}</p>
+            <p><i class="fas fa-user-alt fa-fw w3-margin-right w3-large w3-text-teal"></i>{{i.Marital}}</p>
+          </div>
+          <hr>
+
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
+          <p>{{i.Skill1}}</p>
+<!--          <div class="w3-light-grey w3-round-xlarge w3-small">-->
+<!--            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>-->
+<!--          </div>-->
+          <p>{{i.Skill2}}</p>
+<!--          <div class="w3-light-grey w3-round-xlarge w3-small">-->
+<!--            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">-->
+<!--              <div class="w3-center w3-text-white">80%</div>-->
+<!--            </div>-->
+<!--          </div>-->
+          <p>{{i.skill3}}</p>
+<!--          <div class="w3-light-grey w3-round-xlarge w3-small">-->
+<!--            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>-->
+<!--          </div>-->
+          <p>{{i.skill4}}</p>
+<!--          <div class="w3-light-grey w3-round-xlarge w3-small">-->
+<!--            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>-->
+<!--          </div>-->
+          <br>
+
+          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
+          <p>English</p>
+<!--          <div class="w3-light-grey w3-round-xlarge">-->
+<!--            <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>-->
+<!--          </div>-->
+          <p>Spanish</p>
+<!--          <div class="w3-light-grey w3-round-xlarge">-->
+<!--            <div class="w3-round-xlarge w3-teal" style="height:24px;width:55%"></div>-->
+<!--          </div>-->
+          <p>German</p>
+<!--          <div class="w3-light-grey w3-round-xlarge">-->
+<!--            <div class="w3-round-xlarge w3-teal" style="height:24px;width:25%"></div>-->
+<!--          </div>-->
+          <br>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+      <div class="w3-container w3-card w3-white">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+<table class="table table-borderd">
+  <thead>
+  <th>Qualification</th>
+  <th>Institute</th>
+  <th>Score</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td>{{i.Pg}}</td>
+    <td>{{i.Inst1}}</td>
+    <td>{{i.Score1}}</td>
+    </tr>
+  <tr><td>{{i.Degree}}</td>
+  <td>{{i.Inst2}}</td>
+  <td>{{i.Score2}}</td></tr>
+  <tr>
+    <td>{{i.Tenth}}</td>
+    <td>{{i.Inst3}}</td>
+    <td>{{i.Score3}}</td>
+  </tr>
+  <tr>
+    <td>{{i.Others}}</td>
+    <td>{{i.Inst4}}</td>
+    <td>{{i.Score4}}</td>
+  </tr>
+
+  </tbody>
+
+</table>
+        <!--        <div class="w3-container">-->
+<!--          <h5 class="w3-opacity"><b>PG</b></h5>-->
+<!--          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{i.Pg}}</h6>-->
+<!--          <p>{{i.Inst1}}</p>-->
+<!--          <hr>-->
+<!--        </div>-->
+<!--        <div class="w3-container">-->
+<!--          <h5 class="w3-opacity"><b>DEGREE</b></h5>-->
+<!--          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{i.Degree}}</h6>-->
+<!--          <p>{{i.Inst2}}</p>-->
+<!--          <hr>-->
+<!--        </div>-->
+<!--        <div class="w3-container">-->
+<!--          <h5 class="w3-opacity"><b>10th</b></h5>-->
+<!--          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{i.Tenth}}</h6>-->
+<!--          <p>{{i.Inst3}}</p><br>-->
+<!--          <hr>-->
+<!--        </div>-->
+
+      </div><br>
+
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>{{i.Exp}}</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i> <span class="w3-tag w3-teal w3-round"></span></h6>
+          <p>{{i.Des1}}</p>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>{{i.Exp2}}</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i></h6>
+          <p>{{i.Des2}}</p>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>{{i.Exp3}}</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i></h6>
+          <p>{{i.Des3}} </p><br>
+        </div>
+      </div>
+
+
+{% endfor %}
+    <!-- End Right Column -->
+    </div>
+
+  <!-- End Grid -->
+  </div>
+
+  <!-- End Page Container -->
+</div>
+
+<!--<footer class="w3-container w3-teal w3-center w3-margin-top">-->
+<!--  <p>Find me on social media.</p>-->
+<!--  <i class="fa fa-facebook-official w3-hover-opacity"></i>-->
+<!--  <i class="fa fa-instagram w3-hover-opacity"></i>-->
+<!--  <i class="fa fa-snapchat w3-hover-opacity"></i>-->
+<!--  <i class="fa fa-pinterest-p w3-hover-opacity"></i>-->
+<!--  <i class="fa fa-twitter w3-hover-opacity"></i>-->
+<!--  <i class="fa fa-linkedin w3-hover-opacity"></i>-->
+<!--  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>-->
+<!--</footer>-->
+
+</body>
+</html>
+</body>
+</html>
+{% endblock %}

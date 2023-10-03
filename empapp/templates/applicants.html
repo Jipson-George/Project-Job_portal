@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends 'employerhome.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-bordered table align-middle">
+  <thead>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Mobile number</th>
+  <th>Jobtitle</th>
+  <th>Cover</th>
+  <th>resume</th>
+  <th>Date</th>
+  <th>Profile</th>
+
+  </thead>
+  <tbody>
+  {% for i in adata %}
+  <tr>
+  <td>{{i.name}}</td>
+  <td>{{i.email}}</td>
+  <td>{{i.mobile}}</td>
+  <td>{{i.jobtitle}}</td>
+  <td>{{i.cover}}</td>
+    <td><a href="{{i.Resume.url}}">resume</a></td>
+    <td>{{i.Date}}</td>
+    <td><form method="get" action="{% url 'getapplicantP' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="hidden" value="{{i.email}}" name="em">
+      <button class="btn btn-outline-info">Profile</button>
+    </form></td>
+
+  </tr>
+  {% endfor %}
+  </tbody>
+
+</table>
+
+</body>
+</html>
+{% endblock %}

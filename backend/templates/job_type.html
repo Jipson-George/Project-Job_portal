@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label class="col-sm-12 col-md-2 col-form-label">Types</label>
+<div class="col-sm-12 col-md-10">
+    <form method="post" action="{% url 'jobtypeadd' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+								<input class="form-control" type="text" placeholder="job type" name="Jobtype">
+    <button type="submit" class="btn btn-primary mr-2 btn1">Submit</button>
+        </form>
+							</div>
+<style>
+    .btn1{
+
+    margin-left:400px;
+    margin-top:20px;}
+</style>
+
+</body>
+</html>
+{% endblock %}

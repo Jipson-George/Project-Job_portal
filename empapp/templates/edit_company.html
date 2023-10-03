@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'employerhome.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="form-group" style=" margin-left:350px;" >
+  <h3 style="color:green" style="margin-top:30px;">Company Profile</h3>
+  <div class="col-lg-10" style="margin-top:30px;" >
+      <form method="post" action="{% url 'editempprofile' cid=cdata.id %}" enctype="multipart/form-data">
+          {% csrf_token %}
+
+       <input type="text" placeholder="" name="User" class="form-control" value="{{request.session.Email}}" ><br>
+ <label>Employer name:</label>
+  <input type="text" placeholder="" name="Name" class="form-control" value="{{cdata.Ename}}" required><br>
+             <label>Company name:</label>
+       <input class="form-control" name="Company"  value="{{cdata.Company}}"required><br>
+    <label>Company nature:</label>
+  <input type="text" placeholder="" name="Nature" class="form-control" value="{{cdata.Nature}}" required><br>
+
+    <label>No of employes:</label>
+  <input type="text" placeholder="" name="Noemp" class="form-control" value="{{cdata.Enumber}}" required><br>
+           <label>Founded on:</label>
+  <input type="text" placeholder="" name="Found" class="form-control" value="{{cdata.Founded}}" required><br>
+           <label>Contact number:</label>
+  <input type="text" placeholder="" name="Contact" class="form-control" value="{{cdata.Contact}}" pattern="[0-9]{10}" required><br>
+           <label>Company Email:</label>
+  <input type="text" placeholder="" name="Cemail" class="form-control" value="{{cdata.Cemail}}" required><br>
+              <label>Website:</label>
+  <input type="text" placeholder="" name="Website" class="form-control"  value="{{cdata.Website}}"><br>
+           <label>Address:</label><br>
+    <textarea class="form-control" name="Address">{{cdata.Address}}</textarea><br>
+
+                <label>Description:</label><br>
+    <textarea class="form-control" name="Description">{{cdata.Description}}</textarea><br>
+
+      <label>Company logo:</label>
+          <img src="{{cdata.Logo.url}}" width="100px" height="80px" >
+      <input type="file" placeholder="" name="Logo1" class="form-control" ><br>
+
+          <label>Legal Documentation:</label>
+      <input type="file" placeholder="" name="Document" class="form-control"  value="{{cdata.Documentation.url}}"><br>
+
+{% if request.session.Email %}
+    <div>
+      <button class="btn btn-outline-success" style="margin-left:220px; margin-top:25px; width:400px;  margin-bottom:50px;">Submit</button>
+    </div>
+          </form>
+      {% else %}
+      <a href="{% url 'employerreg' %}">
+      <div style="margin-left:170px; border-radius:5px;  margin-top:25px; width:500px; text-align:center; color:white;  margin-bottom:50px; height:45px; background-color:#00B074;">
+      <h5 style="padding-top:10px;color:black;">Login/Register</h5>
+          </div></a>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
+{% endblock %}
